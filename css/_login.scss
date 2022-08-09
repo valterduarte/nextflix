@@ -25,13 +25,11 @@
     padding: 0 16px;
   }
 
-  .form-cad {
-    form {
-      display: flex;
-      flex-direction: column;
-      margin-top: 60%;
-    }
-  
+  form {
+    display: flex;
+    flex-direction: column;
+    margin-top: 60%;
+
     label input {
       margin-top: 16px;
       width: 100%;
@@ -41,6 +39,10 @@
       border-radius: 8px;
       color: #828282;
       border-color: #333333;
+    }
+
+    p {
+      color: white;
     }
   
     button {
@@ -65,3 +67,4 @@
     }
   }
 }
+

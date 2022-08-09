@@ -7,23 +7,44 @@
     <title>NextFlix</title>
     <link rel="stylesheet" href="css/main.css" />
   </head>
+
   <body>
-    <div class="container">
-      <img src="/img/Group.png" alt="" />
+    <div id="container-login">
+      <img
+        src="/img/logo-netflix.svg"
+        alt=""
+        title="imagen escrita netflix em vermelho"
+      />
 
-      <form action="" method="post">
-        <label>
-          <input type="email" placeholder="Email" name="email" />
-        </label>
+      <div class="form-cad">
+        <form action="/catalogo.html" method="post">
+          <label>
+            <input
+              type="email"
+              id="form-email"
+              placeholder="E-mail"
+              name="email"
+            />
+          </label>
 
-        <label>
-          <input type="password" placeholder="Senha" name="Senha" />
-        </label>
-        <br />
+          <label>
+            <input
+              type="password"
+              id="password"
+              placeholder="Senha"
+              name="senha"
+            />
+          </label>
 
-        <button>ENTRAR</button>
-        <a href="http://">Recuperar a senha</a>
-      </form>
+          <button type="submit" id="button" onclick="formLogin()">
+            ENTRAR
+          </button>
+
+          <a href="#">Recuperar a senha</a>
+        </form>
+      </div>
     </div>
+
+    <script src="script/script.js"></script>
   </body>
 </html>

@@ -1,5 +1,4 @@
-@import 'base';
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Oswald:wght@300;400;700&family=Roboto+Condensed:ital,wght@0,300;0,400;0,700;1,300&display=swap');
 
-body {
-  background-color:$background-black;
-}
+@import 'base';
+@import 'login';

@@ -1,29 +1,55 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Oswald:wght@300;400;700&family=Roboto+Condensed:ital,wght@0,300;0,400;0,700;1,300&display=swap");
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: "Montserrat", sans-serif;
 }
 
-.container {
+body {
+  background-color: #000000;
+}
+
+@-webkit-keyframes onLoading {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes onLoading {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+#container-login {
   display: flex;
   width: 100%;
   max-width: 350px;
-  height: auto;
+  height: 100vh;
   margin: 32px auto;
   flex-direction: column;
+  -webkit-animation: 3s ease-out 0s onLoading forwards;
+          animation: 3s ease-out 0s onLoading forwards;
 }
-.container img {
-  display: block;
-  margin: auto;
-  width: 120px;
-  max-width: 350px;
+#container-login img {
+  width: 100%;
+  max-width: 200px;
+  height: auto;
+  margin: 32px auto 0;
+  padding: 0 16px;
 }
-.container form {
+#container-login .form-cad form {
   display: flex;
   flex-direction: column;
-  margin-top: 350px;
+  margin-top: 60%;
 }
-.container label input {
+#container-login .form-cad label input {
   margin-top: 16px;
   width: 100%;
   height: 64px;
@@ -33,7 +59,8 @@
   color: #828282;
   border-color: #333333;
 }
-.container button {
+#container-login .form-cad button {
+  font-weight: 600;
   margin-top: 16px;
   width: 100%;
   height: 64px;
@@ -43,14 +70,11 @@
   text-transform: uppercase;
   color: #828282;
   border-color: #333333;
+  cursor: pointer;
 }
-.container a {
+#container-login .form-cad a {
   text-align: center;
   text-decoration: none;
   color: #828282;
   margin-top: 38px;
-}
-
-body {
-  background-color: #000000;
 }/*# sourceMappingURL=main.css.map */

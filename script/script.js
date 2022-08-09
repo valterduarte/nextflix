@@ -2,12 +2,16 @@ function formLogin() {
   const formEmail = document.getElementById('form-email').value
 
   if (formEmail === '') {
-    const pTag = document.createElement('p')
-    const errorMsg = document.createTextNode('Usuário ou senha inválidos')
-    pTag.appendChild(errorMsg)
+    const hasPTag = document.getElementsByTagName('p')
 
-    const divFormCad = document.getElementsByTagName('label')[1]
-    divFormCad.appendChild(pTag)
+    if (hasPTag.length === 0) {
+      const pTag = document.createElement('p')
+      const errorMsg = document.createTextNode('Usuário ou senha inválidos')
+      pTag.appendChild(errorMsg)
+
+      const divFormCad = document.getElementsByTagName('label')[1]
+      divFormCad.appendChild(pTag)
+    }
 
     return
   }

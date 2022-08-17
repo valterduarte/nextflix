@@ -60,7 +60,8 @@ body {
   border-color: #333333;
 }
 #container-login form p {
-  color: white;
+  color: #828282;
+  text-align: center;
 }
 #container-login form button {
   font-weight: 600;
@@ -80,4 +81,49 @@ body {
   text-decoration: none;
   color: #828282;
   margin-top: 38px;
+}
+
+#container-catalogo {
+  display: flex;
+  width: 100%;
+  max-width: 350px;
+  margin: 32px auto;
+  flex-direction: column;
+  color: #828282;
+}
+#container-catalogo #menu {
+  display: flex;
+  margin: auto;
+  align-items: center;
+  gap: 32px;
+}
+#container-catalogo ul {
+  display: flex;
+  gap: 32px;
+}
+#container-catalogo li {
+  list-style: none;
+}
+#container-catalogo #banner {
+  height: 60%;
+}
+#container-catalogo #banner img {
+  width: 100%;
+  height: auto;
+}
+#container-catalogo #list-info {
+  display: flex;
+  margin: 16px auto 0;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+}
+#container-catalogo button {
+  background-color: #E82C2A;
+  width: 118px;
+  height: 48px;
+  border-radius: 8px;
+  color: #fff;
+  border-color: #E82C2A;
+  cursor: pointer;
 }/*# sourceMappingURL=main.css.map */

@@ -1,0 +1,53 @@
+#container-catalogo {
+  display:flex;
+  width: 100%;
+  max-width:350px;
+  margin: 32px auto;
+  flex-direction: column;
+  color:$color-font;
+
+  #menu { 
+    display: flex;
+    margin: auto;
+    align-items: center;
+    gap:32px;
+  }
+
+  ul {
+    display:flex;
+    gap:32px;
+  }
+
+  li {
+    list-style:none;
+  }
+
+  #banner {
+    height: 60%;
+
+    img {
+      width: 100%;
+      height: auto;
+    }
+  }
+
+  #list-info {
+    display:flex;
+    margin: 16px auto 0;
+    align-items: center;
+    justify-content: space-between;
+    gap:32px;
+  }
+  
+  button {
+    background-color: $color-btn;
+    width: 118px;
+    height: 48px;
+    border-radius: 8px;
+    color: #fff;
+    border-color: #E82C2A;
+    cursor: pointer;
+  }
+  
+  
+}

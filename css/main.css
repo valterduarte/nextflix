@@ -119,6 +119,7 @@ body {
   gap: 32px;
 }
 #container-catalogo button {
+  display: flex;
   background-color: #E82C2A;
   width: 118px;
   height: 48px;
@@ -126,4 +127,25 @@ body {
   color: #fff;
   border-color: #E82C2A;
   cursor: pointer;
+  padding: 14px 20px 14px 20px;
+  justify-content: space-around;
+}
+#container-catalogo button spam {
+  font-weight: 600;
+}
+#container-catalogo .films-series {
+  width: 100%;
+  height: auto;
+}
+#container-catalogo .films-series .thumb-films-series {
+  display: flex;
+  width: 100%;
+  margin-top: 16px;
+}
+#container-catalogo .films-series .thumb-films-series img {
+  width: 30%;
+  margin: 0 auto;
+}
+#container-catalogo .films-series p {
+  margin-top: 30px;
 }/*# sourceMappingURL=main.css.map */

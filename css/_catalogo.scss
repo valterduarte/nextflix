@@ -1,10 +1,46 @@
+#loading {
+  display: flex;
+  font-size: 200%;
+  margin: 0 auto;
+  color: $color-btn;
+}
+
+#loader {
+  border: #E82C2A solid 2px ;
+  border-radius: 50%;
+  border-right: gray  solid 2px;
+  width: 60px;
+  height: 60px;
+  margin: 0 auto;
+
+  animation: circle 1s linear infinite;
+}
+
+@keyframes circle {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+  
+
+#catalogo {
+  display:none;
+}
+
 #container-catalogo {
   display:flex;
   width: 100%;
   max-width:350px;
-  margin: 32px auto;
+  min-height: 100vh;
+  margin: 0 auto;
   flex-direction: column;
   color:$color-font;
+  justify-content: center;
 
   #menu { 
     display: flex;

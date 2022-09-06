@@ -83,14 +83,13 @@ body {
   margin-top: 38px;
 }
 
-#loading {
-  display: flex;
+#initial-loading .loading {
   font-size: 200%;
   margin: 0 auto;
   color: #E82C2A;
 }
 
-#loader {
+#initial-loading .loader {
   border: #E82C2A solid 2px;
   border-radius: 50%;
   border-right: gray solid 2px;

@@ -6,7 +6,7 @@ function formLogin() {
     showMsgError()
   } else {
     saveInLocalstorage(formEmail, formPassword)
-    window.location.href = 'http://127.0.0.1:5500/catalogo.html'
+    window.location.href = 'http://localhost:3000/catalogo.html'
   }
 }
 

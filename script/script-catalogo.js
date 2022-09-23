@@ -11,41 +11,31 @@ function getDataAPI(apiKey, baseUrl, langPtbr) {
       showSuccess(movies)
     })
     .catch(error => {
-      alert('Infelizmente ocorreu um erro tente novamente !')
+      alert(
+        'Infelizmente ocorreu um erro ao tentar carregar as informações dos filmes tente novamente!'
+      )
     })
 }
 
-function showSuccess(movies) {
+async function showSuccess(movies) {
   document.getElementById('catalogo').style.display = 'block'
   document.getElementById('initial-loading').style.display = 'none'
 
-  getConfigAPI(apiKey, baseUrl, langPtbr)
+  const configsImg = await getConfigImg(apiKey, baseUrl)
 
   for (let i = 0; i < 3; i++) {
-    //console.log(movies[i])
-    //console.log(movies[i].poster_path)
-    //  tenha que pegar a img do filme
-    //  tenho que pegar a tag img no html
-    //  colocar a img ena div
+    const moviePosterUrl = `${configsImg.base_url}${configsImg.poster_sizes[0]}${movies[i].poster_path}`
   }
-
-  /* movies.forEach(movie => {
-    const movieImg = movie.poster_path
-    const movieDivPosters =
-      document.getElementsByClassName('thumb-films-series')[0]
-    const movieImgTags = movieDivPosters.children
-    console.log(movieImgTags)
-  })*/
 }
 
-function getConfigAPI() {
-  fetch(`${baseUrl}/configuration?api_key=${apiKey}`)
+function getConfigImg(apiKey, baseUrl) {
+  return fetch(`${baseUrl}/configuration?api_key=${apiKey}`)
     .then(async responsePromise => {
       const responseAPIConfig = await responsePromise.json()
-      const saveApiConfig = responseAPIConfig
-      console.log(saveApiConfig)
+      const configsImg = responseAPIConfig.images
+      return configsImg
     })
     .catch(error => {
-      alert('Infelizmente ocorreu um erro tente novamente !')
+      console.error('getConfigImg error', error)
     })
 }

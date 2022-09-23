@@ -25,6 +25,11 @@ async function showSuccess(movies) {
 
   for (let i = 0; i < 3; i++) {
     const moviePosterUrl = `${configsImg.base_url}${configsImg.poster_sizes[0]}${movies[i].poster_path}`
+    const getElementImg =
+      document.getElementsByClassName('thumb-films-series')[0].children[i]
+    getElementImg.setAttribute('src', moviePosterUrl)
+
+    console.log(getElementImg)
   }
 }
 

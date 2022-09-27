@@ -4,7 +4,7 @@ const langPtbr = 'language=pt-BR'
 getDataAPI(apiKey, baseUrl, langPtbr)
 
 function getDataAPI(apiKey, baseUrl, langPtbr) {
-  fetch(`${baseUrl}/trending/movie/week?api_key=${apiKey}&language=${langPtbr}`)
+  fetch(`${baseUrl}/trending/all/week?api_key=${apiKey}&language=${langPtbr}`)
     .then(async responsePromise => {
       const responseMovies = await responsePromise.json()
       const moviesAndTvShows = responseMovies.results
@@ -23,17 +23,11 @@ async function showSuccess(moviesAndTvShows) {
 
   const configsImg = await getConfigImg(apiKey, baseUrl)
 
-  const movies = moviesAndTvShows.filter(function (movieOrTvShow) {
-    return movieOrTvShow.media_type === 'movie'
-  })
-  console.log(movies)
+  const movies = filterByNedia('movie', moviesAndTvShows)
+  const tvShows = filterByNedia('tv', moviesAndTvShows)
 
-  for (let i = 0; i < 3; i++) {
-    const moviePosterUrl = `${configsImg.base_url}${configsImg.poster_sizes[0]}${movies[i].poster_path}`
-    const getElementImg =
-      document.getElementsByClassName('thumb-films-series')[0].children[i]
-    getElementImg.setAttribute('src', moviePosterUrl)
-  }
+  insertHTMLThumbs(configsImg, movies, 0)
+  insertHTMLThumbs(configsImg, tvShows, 1)
 }
 
 function getConfigImg(apiKey, baseUrl) {
@@ -46,4 +40,21 @@ function getConfigImg(apiKey, baseUrl) {
     .catch(error => {
       console.error('getConfigImg error', error)
     })
+}
+
+function filterByNedia(mediaType, moviesAndTvShows) {
+  return moviesAndTvShows.filter(function (movieOrTvShow) {
+    return movieOrTvShow.media_type === mediaType
+  })
+}
+
+function insertHTMLThumbs(configsImg, moviesOrTvs, position) {
+  for (let i = 0; i < 3; i++) {
+    const moviePosterUrl = `${configsImg.base_url}${configsImg.poster_sizes[0]}${moviesOrTvs[i].poster_path}`
+    const getElementImg =
+      document.getElementsByClassName('thumb-films-series')[position].children[
+        i
+      ]
+    getElementImg.setAttribute('src', moviePosterUrl)
+  }
 }

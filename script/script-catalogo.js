@@ -1,10 +1,12 @@
 const apiKey = 'ec7b7bc4b19c9ad9b313a59e3ced5dd6'
 const baseUrl = 'https://api.themoviedb.org/3'
-const langPtbr = 'language=pt-BR'
+const langPtbr = 'pt-BR'
 getDataAPI(apiKey, baseUrl, langPtbr)
 
 function getDataAPI(apiKey, baseUrl, langPtbr) {
-  fetch(`${baseUrl}/trending/all/week?api_key=${apiKey}&language=${langPtbr}`)
+  fetch(
+    `${baseUrl}/trending/all/week?api_key=${apiKey}&language=${langPtbr}&include_image_language=${langPtbr}`
+  )
     .then(async responsePromise => {
       const responseMovies = await responsePromise.json()
       const moviesAndTvShows = responseMovies.results
@@ -23,8 +25,8 @@ async function showSuccess(moviesAndTvShows) {
 
   const configsImg = await getConfigImg(apiKey, baseUrl)
 
-  const movies = filterByNedia('movie', moviesAndTvShows)
-  const tvShows = filterByNedia('tv', moviesAndTvShows)
+  const movies = filterByMedia('movie', moviesAndTvShows)
+  const tvShows = filterByMedia('tv', moviesAndTvShows)
 
   insertHTMLThumbs(configsImg, movies, 0)
   insertHTMLThumbs(configsImg, tvShows, 1)
@@ -42,7 +44,7 @@ function getConfigImg(apiKey, baseUrl) {
     })
 }
 
-function filterByNedia(mediaType, moviesAndTvShows) {
+function filterByMedia(mediaType, moviesAndTvShows) {
   return moviesAndTvShows.filter(function (movieOrTvShow) {
     return movieOrTvShow.media_type === mediaType
   })

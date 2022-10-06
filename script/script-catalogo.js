@@ -3,18 +3,27 @@ const apiKey = 'ec7b7bc4b19c9ad9b313a59e3ced5dd6'
 const baseUrl = 'https://api.themoviedb.org/3'
 const langPtbr = 'pt-BR'
 
-// showInfo(apiKey, baseUrl, langPtbr)
+showInfo(apiKey, baseUrl, langPtbr)
 
 //----------------------------------------------------------------------------------------------------------------------
 
 async function showInfo() {
   await insertThumbs(apiKey, baseUrl, langPtbr)
+  await insertBanner()
   showCatalogScreen()
+}
+
+async function insertBanner() {
+  const highlightsOfTheDay = await getDataAPI(apiKey, baseUrl, langPtbr, 'day')
+  const configImageBanner = await getConfigImg(apiKey, baseUrl)
+  const bannerPosterUrl = `${configImageBanner.base_url}${configImageBanner.backdrop_sizes[3]}${highlightsOfTheDay[0].backdrop_path}`
+  const BannerHtmlTag = document.getElementById('banner').children[0]
+  BannerHtmlTag.setAttribute('src', bannerPosterUrl)
 }
 
 async function insertThumbs(apiKey, baseUrl, langPtbr) {
   // Aqui vou pegar os dodos da API
-  const moviesAndTvShows = await getDataAPI(apiKey, baseUrl, langPtbr)
+  const moviesAndTvShows = await getDataAPI(apiKey, baseUrl, langPtbr, 'week')
 
   // Essa função vai ficar esperando o retorno da configuração das imagens
   const configsImg = await getConfigImg(apiKey, baseUrl)
@@ -31,9 +40,9 @@ async function insertThumbs(apiKey, baseUrl, langPtbr) {
   return
 }
 
-function getDataAPI(apiKey, baseUrl, langPtbr) {
+function getDataAPI(apiKey, baseUrl, langPtbr, timeWindow) {
   return fetch(
-    `${baseUrl}/trending/all/week?api_key=${apiKey}&language=${langPtbr}&include_image_language=${langPtbr}`
+    `${baseUrl}/trending/all/${timeWindow}?api_key=${apiKey}&language=${langPtbr}&include_image_language=${langPtbr}`
   )
     .then(async responsePromise => {
       // peagar o resultado da API

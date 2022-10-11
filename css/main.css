@@ -138,15 +138,21 @@ body {
   align-items: center;
   gap: 32px;
 }
-#container-catalogo ul {
+#container-catalogo #menu ul {
   display: flex;
   gap: 32px;
 }
-#container-catalogo li {
+#container-catalogo #menu li {
   list-style: none;
 }
+#container-catalogo #menu img {
+  cursor: pointer;
+}
 #container-catalogo #banner {
-  height: 60%;
+  height: auto;
+}
+#container-catalogo #banner a {
+  display: block;
 }
 #container-catalogo #banner img {
   width: 100%;

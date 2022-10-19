@@ -17,15 +17,15 @@ async function showInfo() {
 async function insertBanner() {
   const highlightsOfTheDay = await getDataAPI(apiKey, baseUrl, langPtbr, 'day');
   const configImageBanner = await getConfigImg(apiKey, baseUrl);
+  const highlightRandom = highlightsOfTheDay[Math.floor(Math.random() * highlightsOfTheDay.length)];
 
-  const bannerPosterUrl = `${configImageBanner.base_url}${configImageBanner.backdrop_sizes[0]}${highlightsOfTheDay[0].poster_path}`;
+  const bannerPosterUrl = `${configImageBanner.base_url}${configImageBanner.backdrop_sizes[0]}${highlightRandom.poster_path}`;
   const bannerHtmlTag = document.getElementById('banner').children[0].children[0];
   bannerHtmlTag.setAttribute('src', bannerPosterUrl);
 
-  const idFilms = highlightsOfTheDay[0].id;
+  const idFilms = highlightRandom.id;
   const urlFilms = `http://localhost:3000/detalhes.html?id=${idFilms}`;
   const IdBannerTagA = document.getElementById('banner').children[0];
-  console.log(IdBannerTagA);
   IdBannerTagA.setAttribute('href', urlFilms);
 }
 
@@ -92,8 +92,13 @@ function insertHTMLThumbs(configsImg, moviesOrTvs, position) {
     // guarda a url
     const moviePosterUrl = `${configsImg.base_url}${configsImg.poster_sizes[0]}${moviesOrTvs[i].poster_path}`;
     // vai pegar a div e selecionar a imagen e inserir a source
-    const getElementImg = document.getElementsByClassName('thumb-films-series')[position].children[i];
+    const getElementImg = document.getElementsByClassName('thumb-films-series')[position].children[i].children[0];
     getElementImg.setAttribute('src', moviePosterUrl);
+
+    const idMovieOrTv = moviesOrTvs[i].id;
+    const urlMovieOrTv = `http://localhost:3000/detalhes.html?id=${idMovieOrTv}`;
+    const IdThumbsTagA = document.getElementsByClassName('thumb-films-series')[position].children[i];
+    IdThumbsTagA.setAttribute('href', urlMovieOrTv);
   }
 }
 

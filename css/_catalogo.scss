@@ -58,12 +58,21 @@
     ul {
       display:flex;
       gap:32px;
-    }
-  
-    li {
-      list-style:none;
-    }
 
+      li {
+        list-style:none;
+
+        a {
+          text-decoration: none;
+          color: $color-font;
+        }
+
+        a:hover {
+          color: $color-btn;  
+       }
+     }
+    }
+    
     img {
       cursor:pointer;
     }
@@ -81,6 +90,13 @@
     img {
       width: 100%;
       height: auto;
+      transition: 0.3s ease-in-out;
+
+    }
+
+    img:hover {
+      transform: scale(1.05);
+      opacity: 80%;
     }
   }
 
@@ -99,7 +115,7 @@
     height: 48px;
     border-radius: 8px;
     color: #fff;
-    border-color: #E82C2A;
+    border-color: $color-btn;
     cursor: pointer;
     padding: 14px 20px 14px 20px;
     justify-content:space-around;
@@ -107,7 +123,11 @@
     spam {
       font-weight: 600;
     }
+  }
 
+  button:hover {
+    opacity: (80%);
+    
   }
 
   .films-series {
@@ -118,10 +138,16 @@
       display:flex;
       width: 100%;
       margin-top: 16px;
-
-      img {
+   
+      a {
        width: 30%;
        margin: 0 auto;
+       transition: 0.3s ease-in-out;
+      }
+
+      a:hover {
+        transform: scale(1.1);
+        opacity: 80%;
       }
     }
 

@@ -29,8 +29,18 @@ async function showMovieDetail() {
   const titleOnSinopseFilm = document.getElementById('mini-detail').children[0];
   titleOnSinopseFilm.innerHTML = movieData.title;
 
+  const popularityMatch = document.getElementsByTagName('p')[0].children[0];
+  const integerPopularity = Math.round(movieData.popularity);
+
+  popularityMatch.innerHTML = integerPopularity + ' Views';
+
   const yearOnSinopseFilm = document.getElementsByTagName('p')[0].children[1];
   yearOnSinopseFilm.innerHTML = movieData.release_date.split('-')[0];
+
+  const durationFilm = document.getElementsByTagName('p')[0].children[3];
+  durationFilm.innerHTML = movieData.runtime + 'm';
+
+  console.log('Duration Filme', durationFilm);
 
   const includeSinopse = document.getElementsByClassName('sinopse')[0];
   includeSinopse.innerHTML = movieData.overview;

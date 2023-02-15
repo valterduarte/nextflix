@@ -10,15 +10,6 @@ body {
   background-color: #000000;
 }
 
-@-webkit-keyframes onLoading {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-
 @keyframes onLoading {
   0% {
     opacity: 0;
@@ -34,8 +25,7 @@ body {
   height: 100vh;
   margin: 32px auto;
   flex-direction: column;
-  -webkit-animation: 3s ease-out 0s onLoading forwards;
-          animation: 3s ease-out 0s onLoading forwards;
+  animation: 3s ease-out 0s onLoading forwards;
 }
 #container-login img {
   width: 100%;
@@ -97,17 +87,7 @@ body {
   width: 60px;
   height: 60px;
   margin: 0 auto;
-  -webkit-animation: circle 1s ease-in-out infinite;
-          animation: circle 1s ease-in-out infinite;
-}
-
-@-webkit-keyframes circle {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
+  animation: circle 1s ease-in-out infinite;
 }
 
 @keyframes circle {
@@ -317,4 +297,15 @@ button:hover {
 #filmes-relacionados #lista-filmes-relacionados a:hover {
   transform: scale(1.1);
   opacity: 80%;
+}
+
+#player {
+  display: flex;
+  width: 100%;
+  max-width: 400px;
+  height: 100vh;
+  margin: auto;
+}
+#player img {
+  width: 400px;
 }/*# sourceMappingURL=main.css.map */

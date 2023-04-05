@@ -1,6 +1,7 @@
 import { getSimilarFilms } from './getSimilarFilms.js'
 import { getDataMovie } from './getDataMovie.js'
 import { getConfigImg } from './getConfigImg.js'
+import { showCatalogScreen } from './showCatalogScreen.js'
 
 /* pegar dados na api
 preciso dos detalhes de um filme especifico
@@ -65,16 +66,6 @@ async function showMovieDetail() {
   clickButton.addEventListener('click', function () {
     window.location.href = 'http://localhost:3000/player.html'
   })
-  showCatalogScreen()
-}
-//---------------------------------------------------------------------------------------------------------------------------
 
-//---------------------------------------------------------------------------------------------------------------------------
-
-//------------------------------------------------------------------------------------------------------------------
-
-function showCatalogScreen() {
-  // Vai sair da tela de loading e abrir a tela de catálogo
-  document.getElementById('detalhes').style.display = 'block'
-  document.getElementById('initial-loading').style.display = 'none'
+  showCatalogScreen('detalhes')
 }

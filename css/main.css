@@ -4,6 +4,8 @@
   padding: 0;
   box-sizing: border-box;
   font-family: "Montserrat", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -webkit-osx-moz-smoothing: grayscale;
 }
 
 body {
@@ -59,11 +61,11 @@ body {
   width: 100%;
   height: 64px;
   padding: 22px;
+  border: solid 1px #333333;
   border-radius: 8px;
   background-color: #000000;
   text-transform: uppercase;
   color: #828282;
-  border-color: #333333;
   cursor: pointer;
 }
 #container-login form a {
@@ -148,7 +150,7 @@ body {
 }
 #container-catalogo #banner img:hover {
   transform: scale(1.05);
-  opacity: 80%;
+  opacity: 45%;
 }
 #container-catalogo #list-info {
   display: flex;
@@ -191,10 +193,21 @@ body {
 }
 #container-catalogo .films-series .thumb-films-series a:hover {
   transform: scale(1.1);
-  opacity: 80%;
+  opacity: 45%;
 }
 #container-catalogo .films-series p {
   margin-top: 30px;
+}
+
+#detalhes {
+  display: none;
+}
+
+#initial-loading {
+  min-height: 100vh;
+  flex-direction: column;
+  justify-content: center;
+  display: flex;
 }
 
 #container-detalhes {
@@ -220,7 +233,7 @@ body {
 }
 #container-detalhes #film-detail img:hover {
   transform: scale(1.1);
-  opacity: 80%;
+  opacity: 45%;
 }
 #container-detalhes #film-detail #mini-detail {
   margin-top: 45px;
@@ -293,13 +306,15 @@ button:hover {
   width: 100%;
   height: auto;
   transition: 0.3s ease-in-out;
+  opacity: 100%;
 }
 #filmes-relacionados #lista-filmes-relacionados a:hover {
   transform: scale(1.1);
-  opacity: 80%;
+  opacity: 45%;
 }
 
 #player {
+  position: relative;
   display: flex;
   width: 100%;
   max-width: 400px;
@@ -308,4 +323,15 @@ button:hover {
 }
 #player img {
   width: 400px;
+}
+#player button img {
+  width: 16px;
+}
+#player button {
+  position: absolute;
+  bottom: 20px;
+  right: 35px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
 }/*# sourceMappingURL=main.css.map */

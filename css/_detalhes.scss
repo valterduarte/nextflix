@@ -1,3 +1,15 @@
+
+#detalhes {
+  display: none;
+}
+
+#initial-loading{
+  min-height: 100vh;
+  flex-direction: column;
+  justify-content: center;
+  display: flex;
+}
+
 #container-detalhes {
   width: 100%;
   max-width:350px;
@@ -28,7 +40,7 @@
 
     img:hover {
       transform: scale(1.1);
-      opacity: 80%;
+      opacity: 45%;
     }
     
 
@@ -115,12 +127,14 @@ button:hover {
           width: 100%;
           height: auto;
           transition: 0.3s ease-in-out;
+          opacity: 100%;
+
         }
       }
 
       a:hover {
         transform: scale(1.1);
-        opacity: 80%;
+        opacity: 45%;
       }
       
   }

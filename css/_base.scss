@@ -7,6 +7,9 @@ $color-btn: #E82C2A;
   padding: 0;
   box-sizing: border-box;
   font-family: 'Montserrat', sans-serif;
+
+  -webkit-font-smoothing: antialiased;
+  -webkit-osx-moz-smoothing: grayscale;
   
 }
 

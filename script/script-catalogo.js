@@ -1,3 +1,5 @@
+import { getDataAPI } from './getDataAPI.js'
+
 // Variáveis globais pq vou usar em varios lugares
 const apiKey = 'ec7b7bc4b19c9ad9b313a59e3ced5dd6'
 const baseUrl = 'https://api.themoviedb.org/3'
@@ -7,28 +9,11 @@ showInfo(apiKey, baseUrl, langPtbr)
 
 //----------------------------------------------------------------------------------------------------------------------
 
-async function showInfo() {
+async function showInfo(apiKey, baseUrl, langPtbr) {
   await insertThumbs(apiKey, baseUrl, langPtbr)
   await insertBanner()
 
   showCatalogScreen()
-}
-
-async function insertBanner() {
-  const highlightsOfTheDay = await getDataAPI(apiKey, baseUrl, langPtbr, 'day')
-  const configImageBanner = await getConfigImg(apiKey, baseUrl)
-  const highlightRandom =
-    highlightsOfTheDay[Math.floor(Math.random() * highlightsOfTheDay.length)]
-
-  const bannerPosterUrl = `${configImageBanner.base_url}${configImageBanner.backdrop_sizes[0]}${highlightRandom.poster_path}`
-  const bannerHtmlTag =
-    document.getElementById('banner').children[0].children[0]
-  bannerHtmlTag.setAttribute('src', bannerPosterUrl)
-
-  const idFilms = highlightRandom.id
-  const urlFilms = `http://localhost:3000/detalhes.html?id=${idFilms}`
-  const IdBannerTagA = document.getElementById('banner').children[0]
-  IdBannerTagA.setAttribute('href', urlFilms)
 }
 
 async function insertThumbs(apiKey, baseUrl, langPtbr) {
@@ -50,22 +35,26 @@ async function insertThumbs(apiKey, baseUrl, langPtbr) {
   return
 }
 
-function getDataAPI(apiKey, baseUrl, langPtbr, timeWindow) {
-  return fetch(
-    `${baseUrl}/trending/all/${timeWindow}?api_key=${apiKey}&language=${langPtbr}&include_image_language=${langPtbr}`
-  )
-    .then(async responsePromise => {
-      // peagar o resultado da API
-      const responseMovies = await responsePromise.json()
-      const moviesAndTvShows = responseMovies.results
-      return moviesAndTvShows
-    })
-    .catch(error => {
-      // Caso não de certo a chamada da API vai acionar o alerta do catch
-      alert(
-        'Infelizmente ocorreu um erro ao tentar carregar as informações dos filmes tente novamente!'
-      )
-    })
+async function insertBanner() {
+  const highlightsOfTheDay = await getDataAPI(apiKey, baseUrl, langPtbr, 'day')
+  const configImageBanner = await getConfigImg(apiKey, baseUrl)
+  const highlightRandom =
+    highlightsOfTheDay[Math.floor(Math.random() * highlightsOfTheDay.length)]
+
+  const bannerPosterUrl = `${configImageBanner.base_url}${configImageBanner.backdrop_sizes[0]}${highlightRandom.poster_path}`
+  const bannerHtmlTag =
+    document.getElementById('banner').children[0].children[0]
+  bannerHtmlTag.setAttribute('src', bannerPosterUrl)
+
+  const idFilms = highlightRandom.id
+  const urlFilms = `http://localhost:3000/detalhes.html?id=${idFilms}`
+  const IdBannerTagA = document.getElementById('banner').children[0]
+  IdBannerTagA.setAttribute('href', urlFilms)
+
+  const clickButton = document.querySelector('button')
+  clickButton.addEventListener('click', function () {
+    window.location.href = 'http://localhost:3000/player.html'
+  })
 }
 
 function getConfigImg(apiKey, baseUrl) {

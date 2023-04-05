@@ -57,8 +57,12 @@ async function showMovieDetail() {
       .children[i]
     IdThumbsTagA.setAttribute('href', urlMovieOrTv)
   }
+  const clickButton = document.querySelector('button')
+  clickButton.addEventListener('click', function () {
+    window.location.href = 'http://localhost:3000/player.html'
+  })
+  showCatalogScreen()
 }
-
 //---------------------------------------------------------------------------------------------------------------------------
 
 async function getDataMovie(apiKey, baseUrl, langPtbr, idFilms) {
@@ -100,4 +104,10 @@ function getSimilarFilms(apiKey, baseUrl, langPtbr, idFilms) {
     .catch(error => {
       console.error('getSimilarFilms', error)
     })
+}
+
+function showCatalogScreen() {
+  // Vai sair da tela de loading e abrir a tela de catálogo
+  document.getElementById('detalhes').style.display = 'block'
+  document.getElementById('initial-loading').style.display = 'none'
 }

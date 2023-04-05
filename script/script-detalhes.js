@@ -1,3 +1,7 @@
+import { getSimilarFilms } from './getSimilarFilms.js'
+import { getDataMovie } from './getDataMovie.js'
+import { getConfigImg } from './getConfigImg.js'
+
 /* pegar dados na api
 preciso dos detalhes de um filme especifico
 */
@@ -65,46 +69,9 @@ async function showMovieDetail() {
 }
 //---------------------------------------------------------------------------------------------------------------------------
 
-async function getDataMovie(apiKey, baseUrl, langPtbr, idFilms) {
-  return fetch(
-    `${baseUrl}/movie/${idFilms}?api_key=${apiKey}&language=${langPtbr}&include_image_language=${langPtbr}`
-  )
-    .then(async responsePromise => {
-      return await responsePromise.json()
-    })
-    .catch(error => {
-      // Caso não de certo a chamada da API vai acionar o alerta do catch
-      console.error('filmsDetail error', error)
-    })
-}
-
 //---------------------------------------------------------------------------------------------------------------------------
 
-async function getConfigImg(apiKey, baseUrl) {
-  // É a chamada de ÁPI da configuração das imagens
-  return fetch(`${baseUrl}/configuration?api_key=${apiKey}`)
-    .then(async responsePromise => {
-      // Aqui vai ficar aguardando a resposta da promise e assim que tiver os dados vai guardar no objeto json
-      const configImgData = await responsePromise.json()
-      return configImgData.images
-    })
-    .catch(error => {
-      // Caso não de certo a chamada da API vai acionar o alerta do catch
-      console.error('getConfigImg error', error)
-    })
-}
 //------------------------------------------------------------------------------------------------------------------
-function getSimilarFilms(apiKey, baseUrl, langPtbr, idFilms) {
-  return fetch(
-    `${baseUrl}/movie/${idFilms}/similar?api_key=${apiKey}&language=${langPtbr}&include_image_language=${langPtbr}`
-  )
-    .then(async responsePromise => {
-      return await responsePromise.json()
-    })
-    .catch(error => {
-      console.error('getSimilarFilms', error)
-    })
-}
 
 function showCatalogScreen() {
   // Vai sair da tela de loading e abrir a tela de catálogo
